@@ -1,9 +1,21 @@
-import budgetData from "@/data/budget-2026-27.json";
+import budgetData2026_27 from "@/data/budget-2026-27.json";
 
-export type BudgetData = typeof budgetData;
+export type BudgetData = typeof budgetData2026_27;
 
-export function getBudgetData(): BudgetData {
-  return budgetData;
+const budgets: Record<string, BudgetData> = {
+  "2026-27": budgetData2026_27,
+};
+
+export function getBudget(fiscalYear: string = "2026-27"): BudgetData {
+  const budget = budgets[fiscalYear];
+  if (!budget) {
+    throw new Error(`Budget data for fiscal year ${fiscalYear} not found. Available: ${Object.keys(budgets).join(", ")}`);
+  }
+  return budget;
+}
+
+export function getAvailableYears(): string[] {
+  return Object.keys(budgets);
 }
 
 export function formatDollars(value: number): string {

@@ -5,6 +5,7 @@ interface HorizontalBarProps {
   sourcePages: number[];
   subItems?: Array<{ label: string; value: number; sourcePages: number[] }>;
   isCalculated?: boolean;
+  barColor?: string;
 }
 
 export default function HorizontalBar({
@@ -14,6 +15,7 @@ export default function HorizontalBar({
   sourcePages,
   subItems,
   isCalculated = false,
+  barColor = "bg-primary",
 }: HorizontalBarProps) {
   const percentage = total > 0 ? (value / total) * 100 : 0;
   const formattedValue = new Intl.NumberFormat("en-US", {
@@ -38,19 +40,19 @@ export default function HorizontalBar({
       </div>
       <div className="relative h-6 bg-zinc-100 dark:bg-zinc-800 rounded overflow-hidden">
         <div
-          className="h-full bg-zinc-600 dark:bg-zinc-400 transition-all duration-300"
+          className={`h-full ${barColor} transition-all duration-500 ease-out`}
           style={{ width: `${Math.min(percentage, 100)}%` }}
         />
       </div>
       <p className="text-xs text-zinc-500 dark:text-zinc-400 flex flex-wrap gap-2">
         Source:
-        {sourcePages.map((page, i) => (
+        {sourcePages.map((page) => (
           <a
             key={page}
             href={`/source/2026-27-final-general-fund-budget.pdf#page=${page}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline hover:text-zinc-700 dark:hover:text-zinc-300"
+            className="underline hover:text-primary dark:hover:text-primary/80"
           >
             p. {page}
           </a>
@@ -58,7 +60,7 @@ export default function HorizontalBar({
       </p>
       {subItems && subItems.length > 0 && (
         <details className="group mt-2">
-          <summary className="cursor-pointer text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 font-medium select-none">
+          <summary className="cursor-pointer text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary dark:hover:text-primary/80 font-medium select-none">
             Show detail ({subItems.length} items)
           </summary>
           <div className="mt-2 space-y-2 ml-4 border-l border-zinc-200 dark:border-zinc-700 pl-4">
@@ -87,13 +89,13 @@ export default function HorizontalBar({
                   </div>
                   <p className="text-xs text-zinc-500 dark:text-zinc-400 flex flex-wrap gap-2">
                     Source:
-                    {item.sourcePages.map((page, i) => (
+                    {item.sourcePages.map((page) => (
                       <a
                         key={page}
                         href={`/source/2026-27-final-general-fund-budget.pdf#page=${page}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline hover:text-zinc-700 dark:hover:text-zinc-300"
+                        className="underline hover:text-primary dark:hover:text-primary/80"
                       >
                         p. {page}
                       </a>

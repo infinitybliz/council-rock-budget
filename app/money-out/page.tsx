@@ -1,8 +1,9 @@
-import { getBudgetData, formatDollars, formatPct } from "@/lib/budget";
+import { getBudget, formatDollars, formatPct } from "@/lib/budget";
 import HorizontalBar from "@/components/HorizontalBar";
+import SpendingRing from "@/components/kokonutui/spending-ring";
 
 export default function MoneyOutPage() {
-  const data = getBudgetData();
+  const data = getBudget("2026-27");
   const { expenditures, totals } = data;
 
   const totalExpenditures = totals.total_expenditures.value;
@@ -38,38 +39,97 @@ export default function MoneyOutPage() {
     sourcePages: expenditures.detail_pages,
   }));
 
+  // SpendingRing categories from major groups
+  const spendingCategories = [
+    {
+      name: "Instruction",
+      amount: expenditures.major_groups["1000 Instruction"],
+      stroke: "stroke-primary",
+      dot: "bg-primary",
+    },
+    {
+      name: "Support Services",
+      amount: expenditures.major_groups["2000 Support services"],
+      stroke: "stroke-chart-2",
+      dot: "bg-chart-2",
+    },
+    {
+      name: "Non-Instructional",
+      amount: expenditures.major_groups["3000 Non-instructional services"],
+      stroke: "stroke-chart-3",
+      dot: "bg-chart-3",
+    },
+    {
+      name: "Other & Financing",
+      amount: expenditures.major_groups["5000 Other expenditures and financing uses"],
+      stroke: "stroke-chart-4",
+      dot: "bg-chart-4",
+    },
+  ];
+
   return (
     <div className="space-y-10">
-      <header className="space-y-2">
+      <a href="#money-out-content" className="skip-link">
+        Skip to main content
+      </a>
+
+      <header id="money-out-content" className="space-y-2">
         <h1 className="text-3xl font-semibold text-zinc-900 dark:text-zinc-100">Money Out: Expenditures</h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl">
           Total expenditures for 2026–27: {formatDollars(totalExpenditures)}. Nearly two-thirds goes to classroom instruction.
         </p>
       </header>
 
+      {/* Spending Ring Visualization */}
+      <section className="space-y-6" aria-labelledby="spending-ring-heading">
+        <h2 id="spending-ring-heading" className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+          Spending by Category (Interactive)
+        </h2>
+        <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-700 p-6">
+          <p className="text-zinc-600 dark:text-zinc-400 mb-4 max-w-2xl">
+            Use arrow keys or drag to explore each category. Click a legend item to jump to it.
+            Press Escape to pause animation.
+          </p>
+          <SpendingRing
+            title="2026–27 General Fund Expenditures"
+            categories={spendingCategories}
+            currency="USD"
+          />
+        </div>
+      </section>
+
       <section className="space-y-6" aria-labelledby="major-groups-heading">
         <h2 id="major-groups-heading" className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-          Major Spending Groups
+          Major Spending Groups (Horizontal Bars)
         </h2>
         <div className="space-y-6">
-          {majorGroups.map((group) => (
-            <HorizontalBar
-              key={group.key}
-              label={group.label}
-              value={group.value}
-              total={totalExpenditures}
-              sourcePages={group.pages}
-              subItems={
-                group.key === "1000 Instruction"
-                  ? instructionItems
-                  : group.key === "2000 Support services"
-                    ? supportServicesItems
-                    : group.key === "3000 Non-instructional services"
-                      ? nonInstructionalItems
-                      : otherItems
-              }
-            />
-          ))}
+          {majorGroups.map((group, index) => {
+            const colors = [
+              "bg-primary",
+              "bg-chart-2",
+              "bg-chart-3",
+              "bg-chart-4",
+            ];
+            return (
+              <HorizontalBar
+                key={group.key}
+                label={group.label}
+                value={group.value}
+                total={totalExpenditures}
+                sourcePages={group.pages}
+                subItems={
+                  group.key === "1000 Instruction"
+                    ? instructionItems
+                    : group.key === "2000 Support services"
+                      ? supportServicesItems
+                      : group.key === "3000 Non-instructional services"
+                        ? nonInstructionalItems
+                        : otherItems
+                }
+                barColor={colors[index]}
+              />
+            );
+          })}
         </div>
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
           Percentages of total expenditures: Instruction {formatPct((expenditures.major_groups["1000 Instruction"] / totalExpenditures) * 100)},
@@ -91,7 +151,7 @@ export default function MoneyOutPage() {
           {instructionItems
             .sort((a, b) => b.value - a.value)
             .map((item) => (
-              <div key={item.label} className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700">
+              <div key={item.label} className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700 hover:border-primary/30 dark:hover:border-primary/30 transition-colors">
                 <div className="flex items-baseline justify-between gap-4 flex-wrap">
                   <dt className="font-medium text-zinc-900 dark:text-zinc-100">{item.label}</dt>
                   <dd className="font-mono text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
@@ -123,7 +183,7 @@ export default function MoneyOutPage() {
           {supportServicesItems
             .sort((a, b) => b.value - a.value)
             .map((item) => (
-              <div key={item.label} className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700">
+              <div key={item.label} className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700 hover:border-chart-2/30 dark:hover:border-chart-2/30 transition-colors">
                 <div className="flex items-baseline justify-between gap-4 flex-wrap">
                   <dt className="font-medium text-zinc-900 dark:text-zinc-100">{item.label}</dt>
                   <dd className="font-mono text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
@@ -155,7 +215,7 @@ export default function MoneyOutPage() {
           {nonInstructionalItems
             .sort((a, b) => b.value - a.value)
             .map((item) => (
-              <div key={item.label} className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700">
+              <div key={item.label} className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700 hover:border-chart-3/30 dark:hover:border-chart-3/30 transition-colors">
                 <div className="flex items-baseline justify-between gap-4 flex-wrap">
                   <dt className="font-medium text-zinc-900 dark:text-zinc-100">{item.label}</dt>
                   <dd className="font-mono text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
@@ -187,7 +247,7 @@ export default function MoneyOutPage() {
           {otherItems
             .sort((a, b) => b.value - a.value)
             .map((item) => (
-              <div key={item.label} className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700">
+              <div key={item.label} className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700 hover:border-chart-4/30 dark:hover:border-chart-4/30 transition-colors">
                 <div className="flex items-baseline justify-between gap-4 flex-wrap">
                   <dt className="font-medium text-zinc-900 dark:text-zinc-100">{item.label}</dt>
                   <dd className="font-mono text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
