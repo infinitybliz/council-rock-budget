@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "district": "Council Rock School District",
+    "aun": "122092353",
+    "county": "Bucks",
+    "fiscal_year": "2026-2027",
+    "document": "Final General Fund Budget (state form, signed)",
+    "signed_dates": "2026-06-18",
+    "source_url": "https://files-backend.assets.thrillshare.com/documents/asset/uploaded_file/5923/Crsd/d9487f12-c71e-4bc6-aac7-d57ee9a4ba2c/Signed-Final-GFB.pdf?disposition=inline",
+    "retrieved": "2026-11-07",
+    "pdf_pages": 26,
+    "file_type_note": "The PDF is scanned page images with no text layer. Numbers below were typed in by reading the page images. Line items were checked to add up to the printed totals, but every number still needs a human check against the PDF before publishing.",
+    "human_verified": false
+  },
+  "totals": {
+    "total_expenditures": { "value": 303771755, "pages": [2, 13, 17] },
+    "total_revenues": { "value": 298130012, "pages": [5, 7] },
+    "beginning_fund_balance_available": { "value": 30800000, "pages": [5] },
+    "total_fund_balance_plus_revenues_available": { "value": 328930012, "pages": [5] },
+    "ending_unassigned_fund_balance": { "value": 15658257, "pages": [2, 26] },
+    "ending_unassigned_fund_balance_pct_of_expenditures": { "value": 5.15, "pages": [2] },
+    "ending_committed_assigned_unassigned": { "value": 25158257, "pages": [26] },
+    "ending_total_with_nonspendable_restricted_and_reserve": { "value": 25579257, "pages": [26] },
+    "raised_property_taxes_vs_2025_26": { "value": true, "pages": [2] }
+  },
+  "revenue": {
+    "by_source": {
+      "local": { "value": 230867327, "pages": [5, 6] },
+      "state": { "value": 65906982, "pages": [5, 6] },
+      "federal": { "value": 1355703, "pages": [5, 6, 7] }
+    },
+    "local_detail": {
+      "6111 Current real estate taxes": 184284308,
+      "6112 Interim real estate taxes": 1057979,
+      "6113 Public utility realty taxes": 189344,
+      "6114 Payments in lieu of current taxes": 4900,
+      "6140 Act 511 flat-rate taxes (local services tax)": 173122,
+      "6150 Act 511 proportional taxes (earned income, occupation, real estate transfer)": 33864428,
+      "6400 Delinquencies on taxes levied": 2792537,
+      "6500 Earnings on investments": 5250000,
+      "6700 Revenues from LEA activities": 92470,
+      "6800 Intermediary sources / pass-through funds": 1810268,
+      "6910 Rentals": 869806,
+      "6920 Contributions and donations": 127137,
+      "6940 Tuition from patrons": 41776,
+      "6980 Community services activities": 150000,
+      "6990 Refunds and other miscellaneous": 159252
+    },
+    "local_detail_pages": [6],
+    "state_detail": {
+      "7111 Basic education funding formula": 17579064,
+      "7144 Cyber charter transition": 227236,
+      "7160 Tuition for orphans subsidy": 38889,
+      "7271 Special education funds": 6740084,
+      "7299 Program revenues not listed in 7200 series": 69,
+      "7311 Pupil transportation subsidy": 1468637,
+      "7312 Nonpublic and charter school transportation subsidy": 500000,
+      "7320 Rental and sinking fund payments / building reimbursement": 1302212,
+      "7330 Health services": 248351,
+      "7340 State property tax reduction allocation": 8810940,
+      "7360 Safe schools": 203000,
+      "7505 Ready to Learn block grant": 516762,
+      "7810 State share of Social Security and Medicare": 5061674,
+      "7820 State share of retirement contributions": 23210064
+    },
+    "state_detail_pages": [6],
+    "federal_detail": {
+      "8320 Energy conservation grants": 250000,
+      "8514 Title I": 328785,
+      "8515 Title II": 139784,
+      "8516 Title III": 70437,
+      "8517 Title IV": 26697,
+      "8810 School-based Medicaid reimbursement (ACCESS)": 500000,
+      "8820 Medical assistance administrative claiming": 40000
+    },
+    "federal_detail_pages": [6, 7]
+  },
+  "expenditures": {
+    "summary_pages": [13],
+    "detail_pages": [14, 15, 16, 17],
+    "major_groups": {
+      "1000 Instruction": 191381042,
+      "2000 Support services": 87256657,
+      "3000 Non-instructional services": 4033601,
+      "5000 Other expenditures and financing uses": 21100455
+    },
+    "instruction": {
+      "1100 Regular programs": 120824926,
+      "1200 Special programs": 66342436,
+      "1300 Vocational education": 2692370,
+      "1400 Other instructional programs": 1521310
+    },
+    "support_services": {
+      "2100 Students": 10419714,
+      "2200 Instructional staff": 8169543,
+      "2300 Administration": 12780030,
+      "2400 Pupil health": 3305671,
+      "2500 Business": 1965353,
+      "2600 Operation and maintenance of plant": 22212297,
+      "2700 Student transportation": 21051580,
+      "2800 Central": 7243469,
+      "2900 Other support": 109000
+    },
+    "non_instructional": {
+      "3200 Student activities": 3816604,
+      "3300 Community services": 216997
+    },
+    "other": {
+      "5100 Debt service / other expenditures": 250000,
+      "5200 Interfund transfers out": 20600455,
+      "5900 Budgetary reserve": 250000
+    },
+    "note": "The form lists interfund transfers out but does not say what they pay for."
+  },
+  "taxes": {
+    "pages": [8, 9, 10, 11, 12],
+    "act_1_index_pct": 3.5,
+    "real_estate_mills_2025_26_rebalanced": 144.8978,
+    "real_estate_mills_2026_27": 149.9692,
+    "real_estate_rate_change_pct": 3.5,
+    "tax_levy_2025_26": 191232816,
+    "tax_levy_needed_2026_27": 197875694,
+    "net_real_estate_tax_revenue": 184284308,
+    "taxable_assessed_value_2026_27": 1319442220,
+    "estimated_collection_pct": 97.47153,
+    "homestead_exclusion_relief_total": 8810940,
+    "assessed_value_exclusion_per_homestead": 300,
+    "homestead_properties": 19663,
+    "median_assessed_value_homestead": 39520,
+    "other_local_taxes_unchanged": {
+      "Local services tax": "$5.00",
+      "Earned income tax": "0.5%",
+      "Occupation tax": "400 (rate as printed)",
+      "Real estate transfer tax": "0.5%"
+    }
+  },
+  "debt": {
+    "pages": [20, 24, 25],
+    "bonds_payable": { "2026-06-30_estimate": 239485000, "2027-06-30_projection": 249265000 },
+    "lease_and_right_to_use": { "2026-06-30_estimate": 876000, "2027-06-30_projection": 400000 },
+    "accumulated_compensated_absences": { "2026-06-30_estimate": 8900000, "2027-06-30_projection": 9200000 },
+    "total_long_term_indebtedness": { "2026-06-30_estimate": 249261000, "2027-06-30_projection": 258865000 }
+  },
+  "derived_not_printed_in_document": {
+    "note": "These are our own arithmetic from numbers in the document. Label them as calculated on the website.",
+    "spending_minus_revenue": { "value": 5641743, "formula": "303771755 - 298130012" },
+    "spending_share_pct_rounded": {
+      "Instruction": 63.0,
+      "Support services": 28.7,
+      "Non-instructional services": 1.3,
+      "Other expenditures and financing uses": 6.9
+    },
+    "median_homestead_example": {
+      "taxable_assessed_value": 39220,
+      "formula": "(median assessed value 39520 - homestead exclusion 300) x mills / 1000",
+      "tax_2025_26_approx": 5682.89,
+      "tax_2026_27_approx": 5881.79,
+      "increase_approx": 198.9,
+      "caveat": "Estimate only. Real tax bills can differ, so check the actual bill."
+    }
+  },
+  "questions_this_document_cannot_answer": [
+    "Why the board chose a 3.5% increase (the form shows the rate, not the reasons)",
+    "What the interfund transfers out of $20,600,455 will pay for",
+    "How individual board members voted (that is in the meeting minutes, not this form)"
+  ]
+}
