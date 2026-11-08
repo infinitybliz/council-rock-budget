@@ -30,61 +30,61 @@ export default function MoneyInPage() {
   }));
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 sm:space-y-12 lg:space-y-16">
       <a href="#money-in-content" className="skip-link">
         Skip to main content
       </a>
 
-      <header id="money-in-content" className="space-y-2">
-        <h1 className="text-3xl font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-3">
+      <header id="money-in-content" className="space-y-3 sm:space-y-4">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground flex items-center gap-3">
           <TrendingUp className="text-primary" />
           Money In: Revenue
         </h1>
-        <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl">
+        <p className="text-base sm:text-lg text-muted-foreground max-w-3xl">
           Total revenue for 2026–27: {formatDollars(totalRevenue)}. Most comes from local property and earned income taxes.
         </p>
       </header>
 
       {/* Revenue Summary Cards */}
-      <section className="grid grid-cols-1 sm:grid-cols-3 gap-4" aria-labelledby="revenue-summary-heading">
+      <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6" aria-labelledby="revenue-summary-heading">
         <h2 id="revenue-summary-heading" className="sr-only">Revenue Summary</h2>
-        <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-700 p-6 border-l-4 border-primary">
+        <div className="bg-card rounded-xl border border-border p-6 sm:p-8 border-l-4 border-primary shadow-sm">
           <div className="flex items-center gap-2 mb-2">
             <Building2 className="size-5 text-primary" />
-            <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">Local Revenue</h3>
+            <h3 className="font-semibold text-foreground">Local Revenue</h3>
           </div>
-          <p className="text-3xl font-semibold text-zinc-900 dark:text-zinc-100">{formatDollars(localTotal)}</p>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+          <p className="text-2xl sm:text-3xl font-semibold text-foreground">{formatDollars(localTotal)}</p>
+          <p className="text-sm text-muted-foreground mt-1">
             {formatPct((localTotal / totalRevenue) * 100)} of total
           </p>
         </div>
-        <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-700 p-6 border-l-4 border-chart-2">
+        <div className="bg-card rounded-xl border border-border p-6 sm:p-8 border-l-4 border-chart-2 shadow-sm">
           <div className="flex items-center gap-2 mb-2">
             <Building2 className="size-5 text-chart-2" />
-            <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">State Revenue</h3>
+            <h3 className="font-semibold text-foreground">State Revenue</h3>
           </div>
-          <p className="text-3xl font-semibold text-zinc-900 dark:text-zinc-100">{formatDollars(stateTotal)}</p>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+          <p className="text-2xl sm:text-3xl font-semibold text-foreground">{formatDollars(stateTotal)}</p>
+          <p className="text-sm text-muted-foreground mt-1">
             {formatPct((stateTotal / totalRevenue) * 100)} of total
           </p>
         </div>
-        <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-700 p-6 border-l-4 border-chart-3">
+        <div className="bg-card rounded-xl border border-border p-6 sm:p-8 border-l-4 border-chart-3 shadow-sm">
           <div className="flex items-center gap-2 mb-2">
             <DollarSign className="size-5 text-chart-3" />
-            <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">Federal Revenue</h3>
+            <h3 className="font-semibold text-foreground">Federal Revenue</h3>
           </div>
-          <p className="text-3xl font-semibold text-zinc-900 dark:text-zinc-100">{formatDollars(federalTotal)}</p>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+          <p className="text-2xl sm:text-3xl font-semibold text-foreground">{formatDollars(federalTotal)}</p>
+          <p className="text-sm text-muted-foreground mt-1">
             {formatPct((federalTotal / totalRevenue) * 100)} of total
           </p>
         </div>
       </section>
 
-      <section className="space-y-6" aria-labelledby="by-source-heading">
-        <h2 id="by-source-heading" className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+      <section className="space-y-6 sm:space-y-8" aria-labelledby="by-source-heading">
+        <h2 id="by-source-heading" className="text-xl sm:text-2xl font-semibold text-foreground">
           By Source (Horizontal Bars)
         </h2>
-        <div className="space-y-6">
+        <div className="space-y-6 sm:space-y-8">
           <HorizontalBar
             label="Local Revenue"
             value={localTotal}
@@ -110,37 +110,37 @@ export default function MoneyInPage() {
             barColor="bg-chart-3"
           />
         </div>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+        <p className="text-sm text-muted-foreground">
           Percentages of total revenue: Local {formatPct((localTotal / totalRevenue) * 100)}, State
           {formatPct((stateTotal / totalRevenue) * 100)}, Federal {formatPct((federalTotal / totalRevenue) * 100)}.
         </p>
       </section>
 
-      <section className="space-y-4" aria-labelledby="local-detail-heading">
-        <h2 id="local-detail-heading" className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+      <section className="space-y-4 sm:space-y-6" aria-labelledby="local-detail-heading">
+        <h2 id="local-detail-heading" className="text-xl sm:text-2xl font-semibold text-foreground flex items-center gap-2">
           <Building2 className="text-primary" />
           Local Revenue Detail
         </h2>
-        <p className="text-zinc-600 dark:text-zinc-400">
+        <p className="text-muted-foreground">
           Local revenue totals {formatDollars(localTotal)} ({formatPct((localTotal / totalRevenue) * 100)} of all revenue).
         </p>
-        <dl className="space-y-3">
+        <dl className="space-y-3 sm:space-y-4">
           {localItems
             .sort((a, b) => b.value - a.value)
             .map((item) => (
-              <div key={item.label} className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700 hover:border-primary/30 dark:hover:border-primary/30 transition-colors">
+              <div key={item.label} className="bg-card rounded-lg p-4 sm:p-6 border border-border hover:border-primary/30 dark:hover:border-primary/30 transition-colors duration-200 shadow-sm">
                 <div className="flex items-baseline justify-between gap-4 flex-wrap">
-                  <dt className="font-medium text-zinc-900 dark:text-zinc-100">{item.label}</dt>
-                  <dd className="font-mono text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
+                  <dt className="font-medium text-foreground">{item.label}</dt>
+                  <dd className="font-mono text-muted-foreground whitespace-nowrap">
                     {formatDollars(item.value)}
                   </dd>
-                  <dd className="text-sm text-zinc-500 dark:text-zinc-400 whitespace-nowrap">
+                  <dd className="text-sm text-muted-foreground whitespace-nowrap">
                     {formatPct((item.value / totalRevenue) * 100)} of total revenue
                   </dd>
                 </div>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   Source:{item.sourcePages.map((p) => (
-                    <a key={p} href={`/source/2026-27-final-general-fund-budget.pdf#page=${p}`} target="_blank" rel="noopener noreferrer" className="underline ml-1">p. {p}</a>
+                    <a key={p} href={`/source/2026-27-final-general-fund-budget.pdf#page=${p}`} target="_blank" rel="noopener noreferrer" className="underline ml-1 hover:text-primary transition-colors duration-200">p. {p}</a>
                   ))}
                 </p>
               </div>
@@ -148,32 +148,32 @@ export default function MoneyInPage() {
         </dl>
       </section>
 
-      <section className="space-y-4" aria-labelledby="state-detail-heading">
-        <h2 id="state-detail-heading" className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+      <section className="space-y-4 sm:space-y-6" aria-labelledby="state-detail-heading">
+        <h2 id="state-detail-heading" className="text-xl sm:text-2xl font-semibold text-foreground flex items-center gap-2">
           <Building2 className="text-chart-2" />
           State Revenue Detail
         </h2>
-        <p className="text-zinc-600 dark:text-zinc-400">
+        <p className="text-muted-foreground">
           State revenue totals {formatDollars(stateTotal)} ({formatPct((stateTotal / totalRevenue) * 100)} of all revenue).
           The largest items are the state share of retirement contributions and basic education funding.
         </p>
-        <dl className="space-y-3">
+        <dl className="space-y-3 sm:space-y-4">
           {stateItems
             .sort((a, b) => b.value - a.value)
             .map((item) => (
-              <div key={item.label} className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700 hover:border-chart-2/30 dark:hover:border-chart-2/30 transition-colors">
+              <div key={item.label} className="bg-card rounded-lg p-4 sm:p-6 border border-border hover:border-chart-2/30 dark:hover:border-chart-2/30 transition-colors duration-200 shadow-sm">
                 <div className="flex items-baseline justify-between gap-4 flex-wrap">
-                  <dt className="font-medium text-zinc-900 dark:text-zinc-100">{item.label}</dt>
-                  <dd className="font-mono text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
+                  <dt className="font-medium text-foreground">{item.label}</dt>
+                  <dd className="font-mono text-muted-foreground whitespace-nowrap">
                     {formatDollars(item.value)}
                   </dd>
-                  <dd className="text-sm text-zinc-500 dark:text-zinc-400 whitespace-nowrap">
+                  <dd className="text-sm text-muted-foreground whitespace-nowrap">
                     {formatPct((item.value / totalRevenue) * 100)} of total revenue
                   </dd>
                 </div>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   Source:{item.sourcePages.map((p) => (
-                    <a key={p} href={`/source/2026-27-final-general-fund-budget.pdf#page=${p}`} target="_blank" rel="noopener noreferrer" className="underline ml-1">p. {p}</a>
+                    <a key={p} href={`/source/2026-27-final-general-fund-budget.pdf#page=${p}`} target="_blank" rel="noopener noreferrer" className="underline ml-1 hover:text-primary transition-colors duration-200">p. {p}</a>
                   ))}
                 </p>
               </div>
@@ -181,31 +181,31 @@ export default function MoneyInPage() {
         </dl>
       </section>
 
-      <section className="space-y-4" aria-labelledby="federal-detail-heading">
-        <h2 id="federal-detail-heading" className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+      <section className="space-y-4 sm:space-y-6" aria-labelledby="federal-detail-heading">
+        <h2 id="federal-detail-heading" className="text-xl sm:text-2xl font-semibold text-foreground flex items-center gap-2">
           <DollarSign className="text-chart-3" />
           Federal Revenue Detail
         </h2>
-        <p className="text-zinc-600 dark:text-zinc-400">
+        <p className="text-muted-foreground">
           Federal revenue totals {formatDollars(federalTotal)} ({formatPct((federalTotal / totalRevenue) * 100)} of all revenue).
         </p>
-        <dl className="space-y-3">
+        <dl className="space-y-3 sm:space-y-4">
           {federalItems
             .sort((a, b) => b.value - a.value)
             .map((item) => (
-              <div key={item.label} className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700 hover:border-chart-3/30 dark:hover:border-chart-3/30 transition-colors">
+              <div key={item.label} className="bg-card rounded-lg p-4 sm:p-6 border border-border hover:border-chart-3/30 dark:hover:border-chart-3/30 transition-colors duration-200 shadow-sm">
                 <div className="flex items-baseline justify-between gap-4 flex-wrap">
-                  <dt className="font-medium text-zinc-900 dark:text-zinc-100">{item.label}</dt>
-                  <dd className="font-mono text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
+                  <dt className="font-medium text-foreground">{item.label}</dt>
+                  <dd className="font-mono text-muted-foreground whitespace-nowrap">
                     {formatDollars(item.value)}
                   </dd>
-                  <dd className="text-sm text-zinc-500 dark:text-zinc-400 whitespace-nowrap">
+                  <dd className="text-sm text-muted-foreground whitespace-nowrap">
                     {formatPct((item.value / totalRevenue) * 100)} of total revenue
                   </dd>
                 </div>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   Source:{item.sourcePages.map((p) => (
-                    <a key={p} href={`/source/2026-27-final-general-fund-budget.pdf#page=${p}`} target="_blank" rel="noopener noreferrer" className="underline ml-1">p. {p}</a>
+                    <a key={p} href={`/source/2026-27-final-general-fund-budget.pdf#page=${p}`} target="_blank" rel="noopener noreferrer" className="underline ml-1 hover:text-primary transition-colors duration-200">p. {p}</a>
                   ))}
                 </p>
               </div>

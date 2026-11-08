@@ -18,7 +18,6 @@ export default function BulletChart({
   value,
   target,
   ranges,
-  unit: _unit = "$",
   sourcePages,
   isCalculated = false,
   className = "",
@@ -41,18 +40,18 @@ export default function BulletChart({
   return (
     <div className={`space-y-2 ${className}`}>
       <div className="flex items-baseline justify-between gap-4">
-        <span className="font-medium text-zinc-900 dark:text-zinc-100 truncate">{label}</span>
+        <span className="font-medium text-foreground truncate">{label}</span>
         <div className="flex items-baseline gap-3 flex-shrink-0">
-          <span className="font-mono text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
+          <span className="font-mono text-muted-foreground whitespace-nowrap">
             {formatValue(value)}
           </span>
           {target > 0 && (
-            <span className="text-sm text-zinc-500 dark:text-zinc-400 whitespace-nowrap">
+            <span className="text-sm text-muted-foreground whitespace-nowrap">
               Target: {formatValue(target)}
             </span>
           )}
           {isCalculated && (
-            <span className="text-xs text-zinc-400">(calculated)</span>
+            <span className="text-xs text-muted-foreground">(calculated)</span>
           )}
         </div>
       </div>
@@ -87,7 +86,7 @@ export default function BulletChart({
       </div>
 
       {/* Legend */}
-      <div className="flex items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400 flex-wrap">
+      <div className="flex items-center gap-4 text-xs text-muted-foreground flex-wrap">
         <div className="flex items-center gap-1">
           <span className="w-3 h-3 rounded bg-rose-100 dark:bg-rose-900/30" />
           <span>Poor</span>
@@ -113,7 +112,7 @@ export default function BulletChart({
       </div>
 
       {sourcePages && sourcePages.length > 0 && (
-        <p className="text-xs text-zinc-500 dark:text-zinc-400 flex flex-wrap gap-2">
+        <p className="text-xs text-muted-foreground flex flex-wrap gap-2">
           Source:
           {sourcePages.map((page) => (
             <a
@@ -121,7 +120,7 @@ export default function BulletChart({
               href={`/source/2026-27-final-general-fund-budget.pdf#page=${page}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline hover:text-primary dark:hover:text-primary/80"
+              className="underline hover:text-primary transition-colors duration-200"
             >
               p. {page}
             </a>

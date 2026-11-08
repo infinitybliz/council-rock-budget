@@ -30,14 +30,14 @@ export default function TaxCalculator() {
     new Intl.NumberFormat("en-US").format(value);
 
   return (
-    <div className="bg-white dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 p-6 space-y-6">
+    <div className="bg-card rounded-xl border border-border p-6 space-y-6 shadow-sm">
       <div className="flex items-center gap-2">
         <Calculator className="size-5 text-primary" />
-        <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+        <h3 className="text-lg font-semibold text-foreground">
           Property Tax Calculator
         </h3>
       </div>
-      <p className="text-sm text-zinc-600 dark:text-zinc-400">
+      <p className="text-sm text-muted-foreground">
         <strong>Estimate only.</strong> Real tax bills can differ. Check your actual bill
         from the county.
       </p>
@@ -46,7 +46,7 @@ export default function TaxCalculator() {
         <div>
           <label
             htmlFor="assessed-value"
-            className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1"
+            className="block text-sm font-medium text-foreground mb-1"
           >
             Assessed Value (from your county assessment notice)
           </label>
@@ -58,7 +58,7 @@ export default function TaxCalculator() {
             value={assessedValue}
             onChange={(e) => setAssessedValue(e.target.value)}
             placeholder="e.g., 39520"
-            className="w-full max-w-xs px-3 py-2 border border-zinc-300 dark:border-zinc-600 rounded-lg bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
+            className="w-full max-w-xs px-3 py-2 border border-input rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors duration-200"
           />
         </div>
 
@@ -68,11 +68,11 @@ export default function TaxCalculator() {
             type="checkbox"
             checked={applyExclusion}
             onChange={(e) => setApplyExclusion(e.target.checked)}
-            className="h-4 w-4 rounded border-zinc-300 text-primary focus:ring-primary"
+            className="h-4 w-4 rounded border-input text-primary focus:ring-ring"
           />
           <label
             htmlFor="homestead-exclusion"
-            className="text-sm text-zinc-700 dark:text-zinc-300 cursor-pointer"
+            className="text-sm text-muted-foreground cursor-pointer"
           >
             Apply $300 Homestead Exclusion (Act 1 property tax reduction)
           </label>
@@ -80,19 +80,19 @@ export default function TaxCalculator() {
       </div>
 
       {assessedValue && (
-        <div className="border-t border-zinc-200 dark:border-zinc-700 pt-4 space-y-4">
+        <div className="border-t border-border pt-4 space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bg-zinc-50 dark:bg-zinc-800 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700">
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1 flex items-center gap-1">
-                <Shield className="size-4 text-blue-600 dark:text-blue-400" />
+            <div className="bg-muted rounded-lg p-4 border border-border">
+              <p className="text-sm text-muted-foreground mb-1 flex items-center gap-1">
+                <Shield className="size-4 text-primary" />
                 2025–26 Tax (at {MILLS_2025_26.toFixed(4)} mills)
               </p>
-              <p className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">
+              <p className="text-2xl font-semibold text-foreground">
                 {formatDollars(tax2025_26)}
               </p>
             </div>
-            <div className="bg-zinc-50 dark:bg-zinc-800 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700 border-l-4 border-l-primary">
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1 flex items-center gap-1">
+            <div className="bg-muted rounded-lg p-4 border border-border border-l-4 border-l-primary">
+              <p className="text-sm text-muted-foreground mb-1 flex items-center gap-1">
                 <Shield className="size-4 text-primary" />
                 2026–27 Tax (at {MILLS_2026_27.toFixed(4)} mills)
               </p>
@@ -103,25 +103,25 @@ export default function TaxCalculator() {
           </div>
 
           <div
-            className={`rounded-lg p-4 ${
+            className={`rounded-lg p-4 border ${
               difference > 0
-                ? "bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-800"
-                : "bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800"
+                ? "bg-chart-5/10 dark:bg-chart-5/20 border-chart-5/30"
+                : "bg-chart-2/10 dark:bg-chart-2/20 border-chart-2/30"
             }`}
           >
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">
+            <p className="text-sm text-muted-foreground mb-1">
               Estimated Change
             </p>
             <p
               className={`text-xl font-semibold ${
                 difference > 0
-                  ? "text-rose-600 dark:text-rose-400"
-                  : "text-emerald-600 dark:text-emerald-400"
+                  ? "text-chart-5"
+                  : "text-chart-2"
               }`}
             >
               {difference > 0 ? "+" : ""}{formatDollars(difference)}
             </p>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+            <p className="text-xs text-muted-foreground mt-1">
               Based on {applyExclusion ? "taxable" : "full"} assessed value of{" "}
               {formatNumber(taxableValue)} {applyExclusion ? `(after $${HOMESTEAD_EXCLUSION} exclusion)` : ""}
             </p>
@@ -129,7 +129,7 @@ export default function TaxCalculator() {
         </div>
       )}
 
-      <p className="text-xs text-zinc-500 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-700 pt-4">
+      <p className="text-xs text-muted-foreground border-t border-border pt-4">
         Calculation: (Assessed Value − Exclusion) × Mill Rate ÷ 1,000. Mill rates from budget
         document pages 8–12. Homestead exclusion of $300 applies to qualifying primary
         residences (19,663 properties in district). Median assessed value of homestead
